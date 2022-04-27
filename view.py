@@ -5,7 +5,7 @@ from app import app
 
 @app.route("/")
 def page_index():
-    return "/"
+    return render_template("index.html")
 
 
 @app.route("/list")
@@ -26,3 +26,8 @@ def page_post_upload():
 @app.route("/uploads/<path:path>")
 def static_dir(path):
     return send_from_directory("uploads", path)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
