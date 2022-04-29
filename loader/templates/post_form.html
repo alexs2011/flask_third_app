@@ -8,15 +8,13 @@
 <body>
 <main>
 
-    <a href="index.html" class="link">Назад</a>
+    <a href="{{ url_for('main_blueprint.page_index') }}" class="link">Назад</a>
 
     <h1>Добавить пост</h1>
 
-    <form action="post_uploaded.html" method="POST" enctype="multipart/form-data">
+    <form action="{{ url_for('loader_blueprint.page_post_upload') }}" method="post" enctype="multipart/form-data">
         <p>Картинка к посту</p>
-        <div>
-            <input type="file" name="picture">
-        </div>
+        <input type="file" name="picture">
         <p>Текст к посту</p>
         <div>
             <textarea name="content" rows="5" ></textarea>

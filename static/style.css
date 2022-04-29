@@ -62,3 +62,11 @@ a {
     width: max-content;
     padding: 20px;
 }
+
+.post {
+    padding: 20px;
+    margin: 40px;
+    background-color: #eee;
+    width: 400px;
+    border-radius: 20px;
+}
