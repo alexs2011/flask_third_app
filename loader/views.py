@@ -1,5 +1,6 @@
 from flask import Blueprint, abort, render_template, request, send_from_directory
 
+from logger import logger
 from utility.utils import save_new_post, validate_data
 
 loader_blueprint = Blueprint("loader_blueprint", __name__, template_folder='templates')
@@ -21,12 +22,15 @@ def page_post_upload():
     try:
         validate_data(request)
     except ValueError as e:
+        logger.exception(e)
         return str(e)
     except TypeError as e:
+        logger.exception(e)
         return str(e)
     try:
         new_post = save_new_post(request)
-    except:
+    except Exception as e:
+        logger.exception(e)
         abort(500)
     return render_template("post_uploaded.html", post=new_post)
 

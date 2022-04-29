@@ -48,8 +48,10 @@ def validate_data(request: flask.Request) -> None:
     """
     img = request.files['picture']
     text = request.form['content']
-    if not img or not text:
-        raise ValueError("Ошибка загрузки")
+    if not img:
+        raise ValueError("Ошибка загрузки: изображение не задано")
+    if not text:
+        raise ValueError("Ошибка загрузки: текст поста не задан")
     if img.content_type not in ["image/jpeg", "image/png"]:
         raise TypeError("Загруженный файл - не картинка")
 
