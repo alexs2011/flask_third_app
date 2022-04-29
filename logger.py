@@ -12,4 +12,3 @@ file_handler.setFormatter(file_formatter)
 
 logger.addHandler(console_handler)
 logger.addHandler(file_handler)
-
